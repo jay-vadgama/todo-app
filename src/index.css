@@ -1,13 +1,181 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
+* {
+  font-family: 'Pangolin', cursive;
+  letter-spacing: 0.5px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #e7e7e777 !important;
+  /* background-color: #011423 !important; */
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.CustomCard {
+  padding: 0 4rem;
+  margin-top: 2rem;
+  box-shadow: 0px 0px 20px 5px #6785d9;
+  background-color: #9b9b9b35 !important;
+  border-radius: 27px !important;
+}
+
+@media (max-width: 576px) {
+  .CustomCard {
+    padding: 0 2rem;
+  }
+}
+
+.CardTitleTxt {
+  margin: 30px 0 !important;
+  text-align: center;
+  color: #002649 !important;
+  font-weight: bold !important;
+  font-size: 25px !important;
+}
+
+.center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.CustomAddBtn {
+  background-color: #002649 !important;
+  border: none !important;
+  max-width: 150px;
+  width: 100%;
+  border-radius: 27px !important;
+}
+
+.FilterBtnDiv {
+  margin: 30px 0 20px 0px !important;
+  padding: 0px !important;
+}
+
+.CustomFilterBtn {
+  border-radius: 27px !important;
+  border: none !important;
+  max-width: 180px;
+  width: 100%;
+  margin: 0px 7px !important;
+  background-color: #6785d9 !important;
+
+}
+
+.CustomFilterBtn[aria-pressed="true"] {
+  color: white !important;
+  background-color: #002649 !important;
+
+}
+
+.CustomFilterBtn:hover {
+  background-color: #002649 !important;
+  border: none !important;
+}
+
+#list-heading {
+  margin-bottom: 0px !important;
+  margin-top: 30px !important;
+  color: #002649 !important;
+
+}
+
+ul {
+  padding: 0px !important;
+}
+
+ul li {
+  text-decoration: none !important;
+  list-style: none !important;
+  margin-top: 10px !important;
+}
+
+.block {
+  display: flex;
+}
+
+.left {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  overflow-wrap: anywhere;
+}
+
+.right {
+  float: right;
+}
+
+.CustomViewBtn {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.CustomIcon {
+  color: #002649 !important;
+}
+
+.Text-Animation {
+  text-transform: uppercase;
+  background-image: linear-gradient(-225deg,
+      #4d32ae 0%,
+      #b78fe2 29%,
+      #ed6491 67%,
+      #32966c 100%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.list {
+  background: #fffdfda8;
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.form-control {
+  border-radius: 27px !important;
+}
+
+
+.form-check-input[type=checkbox] {
+  border: 3px solid #002649;
+}
+
+.RemovePaddingLeft {
+  padding-left: 0px !important;
+}
+
+.RemovePaddingRight {
+  padding-right: 0px !important;
+}
+
+.SaveBtn,
+.CloseBtn {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 27px !important;
+}
+
+.CloseIcon {
+  font-size: 25px;
+  color: #ff0000;
+}
+
+.SaveIcon {
+  font-size: 25px;
+  color: #33ff00;
 }
