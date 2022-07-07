@@ -8,8 +8,6 @@ import CustomCard from './components/CustomCard'
 import Heading from './components/Heading';
 import { Container, Row, Col } from 'react-bootstrap';
 
-
-
 const FILTER_MAP = {
 
   Active: task => !task.completed,
@@ -17,7 +15,6 @@ const FILTER_MAP = {
   All: () => true
 };
 const FILTER_NAMES = Object.keys(FILTER_MAP);
-
 
 function App(props) {
   // console.log(props.tasks)
@@ -40,24 +37,20 @@ function App(props) {
 
 
   useEffect(() => {
-    // localstorage only support storing strings as keys and values
-    // - therefore we cannot store arrays and objects without converting the object
-    // into a string first. JSON.stringify will convert the object into a JSON string
-    // reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
     localStorage.setItem("todos", JSON.stringify(tasks));
-    // add the todos as a dependancy because we want to update the
-    // localstorage anytime the todos state changes
   }, [tasks]);
 
 
-  // console.log(tasks[0])
+  function addTask(name) {
+    const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
+    setTasks([...tasks, newTask]);
+  }
 
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
-      // if this task has the same ID as the edited task
+
       if (id === task.id) {
-        // use object spread to make a new object
-        // whose `completed` prop has been inverted
+
         return { ...task, completed: !task.completed }
       }
       return task;
@@ -76,7 +69,6 @@ function App(props) {
     const editedTaskList = tasks.map(task => {
       // if this task has the same ID as the edited task
       if (id === task.id) {
-        //
         return { ...task, name: newName }
       }
       return task;
@@ -109,12 +101,6 @@ function App(props) {
     />
   ));
 
-
-
-  function addTask(name) {
-    const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
-    setTasks([...tasks, newTask]);
-  }
   var headingText;
   if (taskList.length === 0) {
     headingText = `- No task Found`;
@@ -122,8 +108,6 @@ function App(props) {
     const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
     headingText = `${taskList.length} ${tasksNoun} remaining`;
   }
-
-
 
   return (
     <>
@@ -139,9 +123,7 @@ function App(props) {
               <h5 id="list-heading">{headingText}</h5>
               <hr />
               {/* eslint-disable-next-line */}
-              <ul
-                role="list"
-              >
+              <ul role="list">
                 {taskList}
               </ul>
             </CustomCard>
