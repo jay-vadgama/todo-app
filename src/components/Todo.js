@@ -4,13 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faXmarkCircle, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 function Todo(props) {
+
+    // useState for display templates 
     const [isEditing, setEditing] = useState(false);
+
+    // useState for edit task name 
     const [newName, setNewName] = useState('');
 
+    // handle inputs of edit form
     function handleChange(e) {
         setNewName(e.target.value);
     }
 
+    // edit-form submit
     function handleSubmit(e) {
         e.preventDefault();
         if (newName !== '') {
@@ -81,9 +87,10 @@ function Todo(props) {
 
 
     return (
+        // render with conditional operations
         <li className="list">{isEditing ? editingTemplate : viewTemplate}</li>
 
     )
 }
 
-export default Todo
+export default Todo;

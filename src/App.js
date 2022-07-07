@@ -8,8 +8,9 @@ import CustomCard from './components/CustomCard'
 import Heading from './components/Heading';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-const FILTER_MAP = {
 
+// DECLARING FILTER OBJECT
+const FILTER_MAP = {
   Active: task => !task.completed,
   Completed: task => task.completed,
   All: () => true
@@ -19,6 +20,8 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 function App(props) {
   // console.log(props.tasks)
 
+
+  // HOOKS
   const [tasks, setTasks] = useState(() => {
     // get the todos from localstorage
     const savedTodos = localStorage.getItem("todos");
@@ -35,17 +38,18 @@ function App(props) {
 
   const [filter, setFilter] = useState('Active');
 
-
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(tasks));
   }, [tasks]);
 
 
+  // ADD TASK FUNCTION
   function addTask(name) {
     const newTask = { id: "todo-" + nanoid(), name: name, completed: false };
     setTasks([...tasks, newTask]);
   }
 
+  // COMPLETE TASK FUNCTION
   function toggleTaskCompleted(id) {
     const updatedTasks = tasks.map(task => {
 
@@ -58,13 +62,14 @@ function App(props) {
     setTasks(updatedTasks);
   }
 
-
+  // DELETE TASK FUNCTION
   function deleteTask(id) {
     // console.log(id)
     const remainingTasks = tasks.filter(task => id !== task.id);
     setTasks(remainingTasks);
   }
 
+  // EDIT TASK FUNCTION
   function editTask(id, newName) {
     const editedTaskList = tasks.map(task => {
       // if this task has the same ID as the edited task
@@ -76,12 +81,14 @@ function App(props) {
     setTasks(editedTaskList);
   }
 
+  // DELETE ALL TASKS FUNCTION
   function deleteAlltask() {
-    console.log('btn clicked')
+    // console.log('btn clicked')
     localStorage.removeItem("todos");
     setTasks([]);
   }
 
+  // MAP TASKLIST WITH FILTER
   const taskList = tasks
     .filter(FILTER_MAP[filter])
     .map(task => (
@@ -97,6 +104,7 @@ function App(props) {
     ));
 
 
+  // MAP FILTER BUTTONS
   const filterList = FILTER_NAMES.map(name => (
     <FilterButton
       key={name}
@@ -106,6 +114,7 @@ function App(props) {
     />
   ));
 
+  // HEADING TEXT 
   var headingText;
   if (taskList.length === 0) {
     headingText = `- No task Found`;

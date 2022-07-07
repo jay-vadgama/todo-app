@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
-
 function CustomForm(props) {
 
+    // useState for task name
     const [name, setName] = useState('');
 
+    // handle inputs of Add task Form
     function handleChange(e) {
         // console.log(e.target.value);
         setName(e.target.value);
     }
 
+    // Add-form submit
     function handleSubmit(e) {
         e.preventDefault();
         if (name !== '') {

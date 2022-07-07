@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 
-
+// DEFINED STATIC DATA AND PASSED AS PROPS
 const DATA = [
   // { id: "todo-0", name: "Eat", completed: true },
   // { id: "todo-1", name: "Sleep", completed: false },
@@ -21,3 +21,5 @@ root.render(
 );
 
 reportWebVitals();
+
+// Start the app: npm start
