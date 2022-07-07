@@ -6,7 +6,7 @@ import Todo from './components/Todo';
 import { nanoid } from 'nanoid';
 import CustomCard from './components/CustomCard'
 import Heading from './components/Heading';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 const FILTER_MAP = {
 
@@ -76,6 +76,11 @@ function App(props) {
     setTasks(editedTaskList);
   }
 
+  function deleteAlltask() {
+    console.log('btn clicked')
+    localStorage.removeItem("todos");
+    setTasks([]);
+  }
 
   const taskList = tasks
     .filter(FILTER_MAP[filter])
@@ -120,12 +125,16 @@ function App(props) {
               <Container className='center FilterBtnDiv'>
                 {filterList}
               </Container>
+              <hr />
               <h5 id="list-heading">{headingText}</h5>
               <hr />
               {/* eslint-disable-next-line */}
               <ul role="list">
                 {taskList}
               </ul>
+              <div className='rightBtn mb-3'>
+                <Button onClick={deleteAlltask} className="CustomAddBtn">Delete All</Button>
+              </div>
             </CustomCard>
           </Col>
         </Row>
